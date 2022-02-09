@@ -1,9 +1,9 @@
 import React from 'react';
 import Main from './Components/Main/Main';
 import './app.css'
-const App = () => {
+const App = (props) => {
   return <div>
-  <Main/>
+  <Main state={props.state}/>
 </div>
 };
 

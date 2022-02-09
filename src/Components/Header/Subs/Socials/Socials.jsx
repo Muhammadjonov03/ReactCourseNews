@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Socials.css'
 import fb from './../../../../assets/img/fb.svg';
 import tw from './../../../../assets/img/tw.svg';
 import ig from './../../../../assets/img/ig.svg';
 import yt from './../../../../assets/img/yt.svg';
-
-const Socials = () => {
-  return <div className="social-links-wrapper">
+class Socials extends Component {
+  render() {
+    return (
+      <div className="social-links-wrapper">
   <ul className="social-links-list">
     <li className="social-links-item">
       <a href="#" className="social-links-link">
@@ -30,6 +31,8 @@ const Socials = () => {
     </li>
   </ul>
 </div>
-};
+    );
+  }
+}
 
 export default Socials;
