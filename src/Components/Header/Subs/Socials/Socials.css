@@ -1,0 +1,23 @@
+
+.social-links-list {
+  display: flex;
+
+}
+
+.social-links-item {
+  background: #F00;
+  border-radius: 50%;
+}
+
+.social-links-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.social-links-link {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

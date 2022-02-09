@@ -1,0 +1,12 @@
+.breaking-news {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.breaking-news-header {
+  margin-right: 17px;
+  padding: 15px 7px;
+  background: #F65050;
+  color: #fff;
+}

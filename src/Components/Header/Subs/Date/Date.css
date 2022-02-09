@@ -1,0 +1,9 @@
+.date {
+  flex-shrink: 0;
+  display: flex;
+  margin-right: 14px;
+}
+
+.date-icon {
+  margin-right: 13px;
+}

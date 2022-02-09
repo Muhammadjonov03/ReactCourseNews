@@ -1,0 +1,13 @@
+.weather {
+  flex-shrink: 0;
+  display: flex;
+  margin-right: 16px;
+}
+
+.weather-icon {
+  margin-right: 7px;
+}
+
+.weather-degree {
+  margin-right: 8px;
+}

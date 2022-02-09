@@ -1,0 +1,19 @@
+.mainWrapper {
+  max-width: 1166px ;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+.mainInner {
+  max-width: 1170px;
+  width: 100%;
+  display: flex;
+  align-items: center;  
+  font-size: 12px;
+}
+
+
+
+
+
+
