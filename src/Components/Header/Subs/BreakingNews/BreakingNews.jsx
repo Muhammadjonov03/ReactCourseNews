@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import  React   from 'react';
 import './BreakingNews.css'
 
-class BreakingNews extends Component {
-  render() {
+const BreakingNews = (props) => {
     return (
       <div className="breaking-news">
       <p className="breaking-news-header">
         Breaking News
       </p>
-      <p className="breaking-news-text" id={this.props.breakingNews.id}>{this.props.breakingNews.title}</p>
+      <p className="breaking-news-text" id={props.breakingNews.id}>{props.breakingNews.title}</p>
     </div>
     );
   }
-}
+
 
 export default BreakingNews;

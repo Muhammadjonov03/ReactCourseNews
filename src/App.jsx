@@ -3,7 +3,11 @@ import Main from './Components/Main/Main';
 import './app.css'
 const App = (props) => {
   return <div>
-  <Main state={props.state}/>
+  <Main 
+  onAddNews={props.onAddNews}
+  state={props.state} 
+  onAddNewsAuthorChange={props.onAddNewsAuthorChange}
+  onAddNewsInputChange={props.onAddNewsInputChange}/>
 </div>
 };
 

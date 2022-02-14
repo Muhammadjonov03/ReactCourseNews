@@ -1,18 +1,18 @@
 import React from 'react';
 import './Weather.css'
 
-class Weather extends React.Component {
+const Weather = (props) =>  {
   
 
-  render() {
+
     return (
       <div className="weather">
-      <img src={this.props.weatherData.weatherIcon} alt="weather" width={16} height={16} className="weather-icon"/>
-      <p className="weather-degree">{this.props.weatherData.weatherDegree}</p>
-      <p className="weather-city">{this.props.weatherData.location}</p>
+      <img src={props.weatherData.weatherIcon} alt="weather" width={16} height={16} className="weather-icon"/>
+      <p className="weather-degree">{props.weatherData.weatherDegree}</p>
+      <p className="weather-city">{props.weatherData.location}</p>
     </div>
     )
-  }
+
 }
 
 export default Weather;
