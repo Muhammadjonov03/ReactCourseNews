@@ -3,9 +3,9 @@ import './Main.css'
 
 import './Main'
 import Header from "../Header/Header";
-const Main = () => {
+const Main = (props) => {
   return (<>
-    <Header/>
+    <Header weatherData={props.state.weatherData} breakingNews={props.state.breakingNews} date={props.state.date}/>
   </>
   )
 }
