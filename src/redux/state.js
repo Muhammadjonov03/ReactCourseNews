@@ -71,7 +71,29 @@ const state =  {
     breakingNews: {
       id: 123,
       text: 'Indonesia says located black box recorders from crashed plane'
-    }
+    },
+    news: [
+      {
+        title: 'Title',
+        date: '15.02.2022',
+        author: 'Mashxurbek'
+      },
+      {
+        title: 'Title',
+        date: '15.02.2022',
+        author: 'Mahmud'
+      },
+      {
+        title: 'Title',
+        date: '15.02.2022',
+        author: 'Umidjon'
+      },
+      {
+        title: 'Title',
+        date: '15.02.2022',
+        author: 'Murodjon'
+      },
+    ]
   }
 
   export default state
