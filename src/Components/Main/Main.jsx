@@ -14,7 +14,8 @@ const Main = (props) => {
     <Link to="/addNews">Add News</Link>
     <Routes>
         <Route path="/" element={<NewsPage news={props.state.news}/>}/>
-        <Route path="/addNews" element={<AddNews/>}/>
+        <Route path="/addNews" element={<AddNews addNewsInputTitle={props.state.addNewsInputTitle} 
+        onNewsTitleInputChange={props.onNewsTitleInputChange} addNews={props.addNews}/>}/>
     </Routes> 
   </>
   )

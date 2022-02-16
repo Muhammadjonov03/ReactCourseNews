@@ -1,11 +1,18 @@
 import React from 'react'
 
 const AddNews = (props) => {
+  const newsTitle = React.createRef()
+  const titleChange = (e) => {
+    props.onNewsTitleInputChange(e.target.value)
+  }
+  const onAddNewsClicked = () => {
+    props.addNews(newsTitle.current.value)
+  }
   return (
     <div>
-      <input type="text" />
+      <input ref={newsTitle} type="text" id="title"value={props.addNewsInputTitle} onChange={titleChange}/>
       <br />
-      <button>Add News</button>
+      <button onClick={onAddNewsClicked}>Add News</button>
     </div>
   )
 }
