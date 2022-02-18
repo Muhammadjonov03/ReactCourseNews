@@ -98,8 +98,7 @@ const state =  {
     ],
     addNewsInputTitle: '' 
   }
-  export default state
-
+  
   export const onNewsTitleInputChange = (text) => {
     state.addNewsInputTitle =  text
     subscriber(state)
@@ -116,77 +115,11 @@ const state =  {
     subscriber(state)
   }
 
-
+  
   export const subscribe = (observer) => {
-    debugger
     subscriber = observer
   }
 
 
 
-  export const store = {
-    _state: {
-      date: {
-        dateIcon: clock,
-        date: getDate()
-      },
-      weatherData: {
-        weatherDegree: 10,
-        location: 'Tashkent',
-        weatherIcon: sun
-      },
-      breakingNews: {
-        id: 123,
-        text: 'Indonesia says located black box recorders from crashed plane'
-      },
-      news: [
-        {
-          title: 'Title',
-          date: '15.02.2022',
-          author: 'Mashxurbek'
-        },
-        {
-          title: 'Title',
-          date: '15.02.2022',
-          author: 'Mahmud'
-        },
-        {
-          title: 'Title',
-          date: '15.02.2022',
-          author: 'Umidjon'
-        },
-        {
-          title: 'Title',
-          date: '15.02.2022',
-          author: 'Murodjon'
-        },
-      ],
-      addNewsInputTitle: ''
-    },
-    _subscriber() {},
-    _callSubscriber() {
-      this._subscriber(this._state)
-    },
-    subscribe(observer) {
-      debugger
-      this._subscriber = observer
-    },
-    getState() {
-      return this._state
-    },
-    onNewsTitleInputChange(text) {
-      state.addNewsInputTitle =  text
-      this._callSubscriber(store._state)
-    },
-    addNews(text) {
-      const newsItem = {
-        title: text,
-        date: '15.02.2022',
-        author: 'Mashxurbek'
-      }
-      state.news.push(newsItem)
-      state.addNewsInputTitle = ''
-      this._callSubscriber(store._state)
-    },
-    
-  }
+  export default state
