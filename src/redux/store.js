@@ -1,8 +1,6 @@
 import sun from './../assets/img/sun.svg'
 import clock from './../assets/img/clock.svg'
 
-let subscriber = () => {}
-
 const formatMonth = (month) => {
   const monthString = month === 1 
   ? 'January'
@@ -60,66 +58,68 @@ const getDate = () => {
 
   return `${formatDay(weekDay)}, ${date} ${formatMonth(month)} ${year}`
 }
-const state =  {
-    date: {
-      dateIcon: clock,
-      date: getDate()
+
+
+  const store = {
+    _state: {
+      date: {
+        dateIcon: clock,
+        date: getDate()
+      },
+      weatherData: {
+        weatherDegree: 10,
+        location: 'Tashkent',
+        weatherIcon: sun
+      },
+      breakingNews: {
+        id: 123,
+        text: 'Indonesia says located black box recorders from crashed plane'
+      },
+      news: [
+        {
+          title: 'Title',
+          date: '15.02.2022',
+          author: 'Mashxurbek'
+        },
+        {
+          title: 'Title',
+          date: '15.02.2022',
+          author: 'Mahmud'
+        },
+        {
+          title: 'Title',
+          date: '15.02.2022',
+          author: 'Umidjon'
+        },
+        {
+          title: 'Title',
+          date: '15.02.2022',
+          author: 'Murodjon'
+        },
+      ],
+      addNewsInputTitle: '' 
     },
-    weatherData: {
-      weatherDegree: 10,
-      location: 'Tashkent',
-      weatherIcon: sun
+    getState() {
+      return this._state
     },
-    breakingNews: {
-      id: 123,
-      text: 'Indonesia says located black box recorders from crashed plane'
+    _subscriber() {},
+    subscribe(observer) {
+      this._subscriber = observer
     },
-    news: [
-      {
-        title: 'Title',
+    onNewsTitleInputChange(text)  {
+      this._state.addNewsInputTitle =  text
+      this._subscriber(this._state)
+    },
+    addNews () {
+      const newsItem = {
+        title: this._state.addNewsInputTitle,
         date: '15.02.2022',
         author: 'Mashxurbek'
-      },
-      {
-        title: 'Title',
-        date: '15.02.2022',
-        author: 'Mahmud'
-      },
-      {
-        title: 'Title',
-        date: '15.02.2022',
-        author: 'Umidjon'
-      },
-      {
-        title: 'Title',
-        date: '15.02.2022',
-        author: 'Murodjon'
-      },
-    ],
-    addNewsInputTitle: '' 
-  }
-  
-  export const onNewsTitleInputChange = (text) => {
-    state.addNewsInputTitle =  text
-    subscriber(state)
-    console.log(state.addNewsInputTitle);
-  }
-  export const addNews = (text) => {
-    const newsItem = {
-      title: text,
-      date: '15.02.2022',
-      author: 'Mashxurbek'
+      }
+      this._state.news.push(newsItem)
+      this._state.addNewsInputTitle = ''
+      this._subscriber(this._state)
     }
-    state.news.push(newsItem)
-    state.addNewsInputTitle = ''
-    subscriber(state)
   }
 
-  
-  export const subscribe = (observer) => {
-    subscriber = observer
-  }
-
-
-
-  export default state
+  export default store 

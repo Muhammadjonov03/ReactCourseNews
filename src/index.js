@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import state, { addNews, onNewsTitleInputChange, subscribe } from './redux/store'
+import store from './redux/store';
 export const reRender = (state) => {
+  debugger
   ReactDOM.render(
   <BrowserRouter>
-  <App  state={state} onNewsTitleInputChange={onNewsTitleInputChange} addNews={addNews}/>
+    <App  state={state} onNewsTitleInputChange={store.onNewsTitleInputChange.bind(store)} addNews={store.addNews}/>
   </BrowserRouter>,
   document.getElementById('root')
 );}
 
-reRender(state)
-subscribe(reRender)
+reRender(store.getState())
+store.subscribe(reRender)
