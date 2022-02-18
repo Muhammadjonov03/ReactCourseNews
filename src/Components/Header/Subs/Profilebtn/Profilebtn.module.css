@@ -1,0 +1,17 @@
+.profileButton {
+  width: 50px;
+  padding: 8px;  
+  margin-left: 50px;
+  border: none;
+  font-size: 20px;
+  outline: unset;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background .2s linear;
+}
+
+
+.profileButton:hover {
+  background: #eee;
+}

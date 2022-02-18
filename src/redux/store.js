@@ -97,7 +97,8 @@ const getDate = () => {
           author: 'Murodjon'
         },
       ],
-      addNewsInputTitle: '' 
+      addNewsInputTitle: '',
+      profilePopupVisible: true
     },
     getState() {
       return this._state
@@ -108,7 +109,7 @@ const getDate = () => {
     },
     onNewsTitleInputChange(text)  {
       this._state.addNewsInputTitle =  text
-      this._subscriber(this._state)
+      this._subscriber(this)
     },
     addNews () {
       const newsItem = {
@@ -118,7 +119,11 @@ const getDate = () => {
       }
       this._state.news.push(newsItem)
       this._state.addNewsInputTitle = ''
-      this._subscriber(this._state)
+      this._subscriber(this)
+    },
+    toggleProfilePopup() {
+      this._state.profilePopupVisible = !this._state.profilePopupVisible
+      this._subscriber(this)
     }
   }
 

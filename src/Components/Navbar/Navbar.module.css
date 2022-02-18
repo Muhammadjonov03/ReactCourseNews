@@ -1,0 +1,41 @@
+.navbar {
+  background: #393939;
+}
+
+.navbarList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbarLink {
+  padding: 15px 17px;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.navbarLink::before {
+  content: '';
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;  
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  transition: 0.2s linear;
+}
+
+
+.navbarLink:hover.navbarLink::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* .navbarLink.activeLink {
+  background: #F00;
+  color: #fff;
+} */
+.navbarLink.activeLink.navbarLink::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

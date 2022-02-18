@@ -1,7 +1,7 @@
 .mainWrapper {
   max-width: 1166px ;
   margin: 0 auto;
-  padding: 0 100px;
+  position: relative;
 }
 
 .mainInner {
@@ -11,8 +11,6 @@
   align-items: center;  
   font-size: 12px;
 }
-
-
 
 
 

@@ -1,22 +1,30 @@
 import React from "react";
-import './Main.css'
+import style from './Main.module.css'
 import { Link, Routes } from 'react-router-dom';
 import './Main'
 import Header from "../Header/Header";
 import { Route } from 'react-router-dom';
 import NewsPage from "../NewsPage/Newspage";
 import AddNews from './../AddNews/AddNews';
+import Navbar from './../Navbar/Navbar';
 
 const Main = (props) => {
   return (<>
-    <Header weatherData={props.state.weatherData} breakingNews={props.state.breakingNews} date={props.state.date}/>
-    <Link to="/">Home</Link>
-    <Link to="/addNews">Add News</Link>
+    <Header weatherData={props.store.getState().weatherData} 
+            breakingNews={props.store.getState().breakingNews} 
+            date={props.store.getState().date}
+            profilePopupVisible={props.store.getState().profilePopupVisible}
+            toggleProfilePopup={props.store.toggleProfilePopup.bind(props.store)}
+            />
+    <div className={`container `}>
+    <Navbar/>
     <Routes>
-        <Route path="/" element={<NewsPage news={props.state.news}/>}/>
-        <Route path="/addNews" element={<AddNews addNewsInputTitle={props.state.addNewsInputTitle} 
-        onNewsTitleInputChange={props.onNewsTitleInputChange} addNews={props.addNews}/>}/>
+        <Route path="/" 
+        element={<NewsPage news={props.store.getState().news}/>}/>
+        <Route path="/addNews" element={<AddNews addNewsInputTitle={props.store.getState().addNewsInputTitle} 
+        onNewsTitleInputChange={props.store.onNewsTitleInputChange.bind(props.store)} addNews={props.store.addNews.bind(props.store)}/>}/>
     </Routes> 
+    </div>
   </>
   )
 }

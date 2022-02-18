@@ -1,0 +1,17 @@
+.popupWrap {
+  position: absolute;
+  top: 100%;  
+  right: 0;
+  display: flex;
+  background: rgb(80, 76, 76);
+  padding: 15px;
+  flex-direction: column;
+}
+
+.popupLink {
+  color: #fff;
+}
+.popupLink:hover {
+  color: #fff;
+  opacity: 0.5;
+}
