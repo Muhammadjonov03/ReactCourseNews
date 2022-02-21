@@ -7,14 +7,15 @@ import Socials from './Subs/Socials/Socials';
 import Profilebtn from './Subs/Profilebtn/Profilebtn';
 import ProfilePopup from './Subs/ProfilePopup/ProfilePopup';
 const Header = (props) => {
-  debugger
   return  <div className={style.mainWrapper}>
   <div className={style.mainInner}>
     <Weather weatherData={props.headerData.weatherData}/>
     <TodayDate date={props.headerData.date}/>
     <BreakingNews breakingNews={props.headerData.breakingNews}/>
     <Socials/>
-    <Profilebtn dispatch={props.dispatch}/>
+    <Profilebtn 
+    onProfilePopupToggledActionCreator={props.onProfilePopupToggledActionCreator}
+    dispatch={props.dispatch}/>
     {
       props.profilePopupVisible
     ?<ProfilePopup/>

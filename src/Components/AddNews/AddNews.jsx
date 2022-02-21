@@ -1,13 +1,12 @@
 import React from 'react'
 
 const AddNews = (props) => {
-  debugger
   const newsTitle = React.createRef()
   const titleChange = (e) => {
-    props.dispatch({type: 'ON_NEWS_TITLE_INPUT_CHANGED', text: e.target.value})
+    props.dispatch(props.onNewsTitleInputChangeActionCreator(e.target.value))
   }
   const onAddNewsClicked = () => {
-    props.dispatch({type: 'ADD_NEWS'})
+    props.dispatch(props.addNewsActionCreator())
   }
   return (
     <div>
