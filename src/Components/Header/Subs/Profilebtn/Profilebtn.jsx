@@ -3,7 +3,7 @@ import  style from './Profilebtn.module.css'
 
 const Profilebtn = (props) => {
   const onPopupToggled = () => {
-    props.toggleProfilePopup()
+    props.dispatch({type: 'PROFILE_POPUP_TOGGLED'})
   }
   return (
     <button 

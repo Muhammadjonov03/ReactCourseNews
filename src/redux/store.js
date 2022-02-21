@@ -62,20 +62,23 @@ const getDate = () => {
 
   const store = {
     _state: {
-      date: {
-        dateIcon: clock,
-        date: getDate()
+      header: {
+        date: {
+          dateIcon: clock,
+          date: getDate()
+        },
+        weatherData: {
+          weatherDegree: 10,
+          location: 'Tashkent',
+          weatherIcon: sun
+        },
+        breakingNews: {
+          id: 123,
+          text: 'Indonesia says located black box recorders from crashed plane'
+        },
       },
-      weatherData: {
-        weatherDegree: 10,
-        location: 'Tashkent',
-        weatherIcon: sun
-      },
-      breakingNews: {
-        id: 123,
-        text: 'Indonesia says located black box recorders from crashed plane'
-      },
-      news: [
+      news: {
+        allNews: [
         {
           title: 'Title',
           date: '15.02.2022',
@@ -96,9 +99,10 @@ const getDate = () => {
           date: '15.02.2022',
           author: 'Murodjon'
         },
-      ],
+      ]
+    },
       addNewsInputTitle: '',
-      profilePopupVisible: true
+      profilePopupVisible: false
     },
     getState() {
       return this._state
@@ -107,23 +111,24 @@ const getDate = () => {
     subscribe(observer) {
       this._subscriber = observer
     },
-    onNewsTitleInputChange(text)  {
-      this._state.addNewsInputTitle =  text
-      this._subscriber(this)
-    },
-    addNews () {
-      const newsItem = {
-        title: this._state.addNewsInputTitle,
-        date: '15.02.2022',
-        author: 'Mashxurbek'
+    dispatch(action) {         // currentReceivedAction ====== Action  ======{type: "ADD_NEWS", text}
+      if(action.type === 'ADD_NEWS') {
+        const newsItem = {
+          title: this._state.addNewsInputTitle,
+          date: '15.02.2022',
+          author: 'Mashxurbek'
+        }
+        debugger
+        this._state.news.allNews.push(newsItem)
+        this._state.addNewsInputTitle = ''
+        this._subscriber(this)
+      } else if( action.type === 'ON_NEWS_TITLE_INPUT_CHANGED') {
+        this._state.addNewsInputTitle =  action.text
+        this._subscriber(this)
+      } else if(action.type === 'PROFILE_POPUP_TOGGLED') {
+        this._state.profilePopupVisible = !this._state.profilePopupVisible
+        this._subscriber(this)
       }
-      this._state.news.push(newsItem)
-      this._state.addNewsInputTitle = ''
-      this._subscriber(this)
-    },
-    toggleProfilePopup() {
-      this._state.profilePopupVisible = !this._state.profilePopupVisible
-      this._subscriber(this)
     }
   }
 

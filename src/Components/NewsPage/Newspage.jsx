@@ -5,7 +5,7 @@ const NewsPage = (props) => {
     <div className={style.newsPageContainer}>
       <ul> 
         {
-          props.news.map(newsItem => (
+          props.news.allNews.map(newsItem => (
             <li>
               <p>{newsItem.title}</p>
               <span>{newsItem.date}</span> <span>{newsItem.author}</span>
