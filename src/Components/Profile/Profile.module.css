@@ -1,0 +1,16 @@
+.profileWrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profileUsername {
+  font-size: 2rem;
+}

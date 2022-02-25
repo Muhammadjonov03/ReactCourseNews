@@ -1,5 +1,8 @@
 import sun from './../assets/img/sun.svg'
 import clock from './../assets/img/clock.svg'
+import headerReducer from './header-reducer'
+import newsReducer from './news-reducer';
+import profileReducer from './profile-reducer';
 
 const formatMonth = (month) => {
   const monthString = month === 1 
@@ -51,18 +54,8 @@ const getDate = () => {
   const date = new Date().getDate()
   const month = new Date().getMonth() +1
   const year = new Date().getFullYear()
-
-  
-
-
-
   return `${formatDay(weekDay)}, ${date} ${formatMonth(month)} ${year}`
 }
-
-
-export const ADD_NEWS_ACTION_TYPE = 'ADD_NEWS';
-export const ON_NEWS_TITLE_INPUT_CHANGED_ACTION_TYPE = 'ON_NEWS_TITLE_INPUT_CHANGED_ACTION_TYPE' 
-export const PROFILE_POPUP_TOGGLED_ACTION_TYPE = 'PROFILE_POPUP_TOGGLED_ACTION_TYPE' 
 
   const store = {
     _state: {
@@ -80,6 +73,7 @@ export const PROFILE_POPUP_TOGGLED_ACTION_TYPE = 'PROFILE_POPUP_TOGGLED_ACTION_T
           id: 123,
           text: 'Indonesia says located black box recorders from crashed plane'
         },
+        profilePopupVisible: false
       },
       news: {
         allNews: [
@@ -103,10 +97,10 @@ export const PROFILE_POPUP_TOGGLED_ACTION_TYPE = 'PROFILE_POPUP_TOGGLED_ACTION_T
           date: '15.02.2022',
           author: 'Murodjon'
         },
-      ]
-    },
+      ],
       addNewsInputTitle: '',
-      profilePopupVisible: false
+    },
+    profile: {}
     },
     getState() {
       return this._state
@@ -115,36 +109,12 @@ export const PROFILE_POPUP_TOGGLED_ACTION_TYPE = 'PROFILE_POPUP_TOGGLED_ACTION_T
     subscribe(observer) {
       this._subscriber = observer
     },
-    dispatch(action) {         // currentReceivedAction ====== Action  ======{type: "ADD_NEWS", text}
-      if(action.type === ADD_NEWS_ACTION_TYPE) {
-        const newsItem = {
-          title: this._state.addNewsInputTitle,
-          date: '15.02.2022',
-          author: 'Mashxurbek'
-        }
-        this._state.news.allNews.push(newsItem)
-        this._state.addNewsInputTitle = ''
-        this._subscriber(this)
-      } else if( action.type === ON_NEWS_TITLE_INPUT_CHANGED_ACTION_TYPE) {
-        this._state.addNewsInputTitle =  action.text
-        this._subscriber(this)
-      } else if(action.type === PROFILE_POPUP_TOGGLED_ACTION_TYPE) {
-        this._state.profilePopupVisible = !this._state.profilePopupVisible
-        this._subscriber(this)
-      }
+    dispatch(action) {// currentReceivedAction ====== Action  ======{type: "ADD_NEWS", text}
+      this._state.news = newsReducer(this._state.news, action)
+      this._state.header = headerReducer(this._state.header, action)
+      this._state.profile = profileReducer(this._state.profile, action)
+      this._subscriber(this)
     }
   }
 
   export default store 
-
-  // ACTION CREATORS
-  export const onNewsTitleInputChangeActionCreator = (text) => {
-    return { type: ON_NEWS_TITLE_INPUT_CHANGED_ACTION_TYPE, text}
-  }
-  export const addNewsActionCreator = () => {
-    return { type: ADD_NEWS_ACTION_TYPE}
-  }
-
-  export const onProfilePopupToggledActionCreator = () => {
-    return {type: PROFILE_POPUP_TOGGLED_ACTION_TYPE}
-  }

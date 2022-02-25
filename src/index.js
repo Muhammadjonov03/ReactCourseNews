@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import store, { 
-  addNewsActionCreator,
-  onNewsTitleInputChangeActionCreator, 
-  onProfilePopupToggledActionCreator} from './redux/store';
+import store from './redux/store';
+import { onProfilePopupToggledActionCreator } from './redux/header-reducer'
+import { addNewsActionCreator, onNewsTitleInputChangeActionCreator } from './redux/news-reducer';
 export const reRender = (store) => {
   debugger
   ReactDOM.render(

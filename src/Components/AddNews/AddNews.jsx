@@ -5,7 +5,7 @@ const AddNews = (props) => {
   const titleChange = (e) => {
     props.dispatch(props.onNewsTitleInputChangeActionCreator(e.target.value))
   }
-  const onAddNewsClicked = () => {
+  const onAddNewsClicked = () => {debugger
     props.dispatch(props.addNewsActionCreator())
   }
   return (
